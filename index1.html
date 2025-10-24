@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RavZ Gaming Laptops - Unleash Your Power</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(139, 0, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(0) scale(1); opacity: 0.5; }
+            50% { transform: translateX(20%) scale(1.1); opacity: 0.8; }
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(139, 0, 255, 0.3);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #8b00ff, #ff00ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(139, 0, 255, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8b00ff, #ff00ff);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #8b00ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(139, 0, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(255, 0, 255, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #8b00ff, #ff00ff);
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(139, 0, 255, 0.4);
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 60px rgba(255, 0, 255, 0.6);
+            border-color: #ffffff;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 50px;
+            background: linear-gradient(180deg, transparent, rgba(139, 0, 255, 0.05), transparent);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #ffffff, #8b00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(26, 10, 46, 0.5);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 0, 255, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #8b00ff;
+            box-shadow: 0 20px 60px rgba(139, 0, 255, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ff00ff;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Comparison Table */
+        .comparison {
+            padding: 80px 50px;
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        .comparison h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #ffffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .table-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 80px rgba(139, 0, 255, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(26, 10, 46, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        th, td {
+            padding: 25px;
+            text-align: left;
+            border-bottom: 1px solid rgba(139, 0, 255, 0.2);
+        }
+
+        th {
+            background: linear-gradient(135deg, #8b00ff, #ff00ff);
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background: rgba(139, 0, 255, 0.1);
+        }
+
+        td:first-child {
+            font-weight: bold;
+            color: #ff00ff;
+        }
+
+        .model-lite { color: #00d4ff; }
+        .model-pro { color: #8b00ff; }
+        .model-max { color: #ff00ff; }
+
+        /* Notify Form */
+        .notify-section {
+            padding: 80px 50px;
+            background: linear-gradient(180deg, transparent, rgba(255, 0, 255, 0.05), transparent);
+        }
+
+        .notify-section h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .notify-section p {
+            text-align: center;
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 40px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(26, 10, 46, 0.6);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 0, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #ff00ff;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid rgba(139, 0, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #8b00ff;
+            box-shadow: 0 0 20px rgba(139, 0, 255, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #8b00ff, #ff00ff);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(255, 0, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 50px;
+            text-align: center;
+            background: rgba(10, 10, 10, 0.9);
+            border-top: 2px solid rgba(139, 0, 255, 0.3);
+        }
+
+        footer p {
+            color: #888888;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #8b00ff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header>
+        <div class="logo">RavZ</div>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#compare">Compare</a></li>
+                <li><a href="#notify">Notify Me</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>UNLEASH YOUR POWER</h1>
+        <p>Experience gaming redefined with RavZ. Cutting-edge performance meets stunning design in our revolutionary laptop lineup.</p>
+        <a href="#compare" class="cta-button">Explore Models</a>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Why Choose RavZ?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Performance</h3>
+                <p>Latest generation processors and graphics cards deliver unmatched gaming and creative power.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Immersive Display</h3>
+                <p>High refresh rate panels with stunning color accuracy bring every game to life.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">❄️</div>
+                <h3>Advanced Cooling</h3>
+                <p>Revolutionary thermal system keeps performance high and temperatures low during intense sessions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔊</div>
+                <h3>Premium Audio</h3>
+                <p>Immersive sound design with spatial audio support for competitive advantage.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Customizable RGB</h3>
+                <p>Express yourself with per-key RGB lighting and dynamic effects.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔋</div>
+                <h3>All-Day Battery</h3>
+                <p>Extended battery life ensures you can game and work anywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison" id="compare">
+        <h2>Choose Your Beast</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Specification</th>
+                        <th class="model-lite">RavZ Lite</th>
+                        <th class="model-pro">RavZ Pro</th>
+                        <th class="model-max">RavZ Max</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Processor</td>
+                        <td>Intel Core i5-13500H</td>
+                        <td>Intel Core i7-14700HX</td>
+                        <td>Intel Core i9-14900HX</td>
+                    </tr>
+                    <tr>
+                        <td>Graphics</td>
+                        <td>NVIDIA RTX 4050 6GB</td>
+                        <td>NVIDIA RTX 4070 8GB</td>
+                        <td>NVIDIA RTX 4090 16GB</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>16GB DDR5</td>
+                        <td>32GB DDR5</td>
+                        <td>64GB DDR5</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>512GB NVMe SSD</td>
+                        <td>1TB NVMe SSD</td>
+                        <td>2TB NVMe SSD</td>
+                    </tr>
+                    <tr>
+                        <td>Display</td>
+                        <td>15.6" FHD 144Hz</td>
+                        <td>16" QHD 240Hz</td>
+                        <td>17.3" 4K 144Hz</td>
+                    </tr>
+                    <tr>
+                        <td>Battery</td>
+                        <td>65Wh</td>
+                        <td>80Wh</td>
+                        <td>99Wh</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td>2.2 kg</td>
+                        <td>2.5 kg</td>
+                        <td>2.9 kg</td>
+                    </tr>
+                    <tr>
+                        <td>Starting Price</td>
+                        <td>$1,299</td>
+                        <td>$2,199</td>
+                        <td>$3,499</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="notify-section" id="notify">
+        <h2>Be The First To Know</h2>
+        <p>Get exclusive launch updates and early access to RavZ gaming laptops</p>
+        <div class="form-container">
+            <form id="notifyForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="model">Model Interested In</label>
+                    <select id="model" name="model" required>
+                        <option value="">Select a model</option>
+                        <option value="lite">RavZ Lite</option>
+                        <option value="pro">RavZ Pro</option>
+                        <option value="max">RavZ Max</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Notify Me</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#compare">Compare</a>
+            <a href="#notify">Notify Me</a>
+            <a href="#support">Support</a>
+        </div>
+        <p>&copy; 2025 RavZ Gaming. All rights reserved. Designed for champions.</p>
+    </footer>
+
+    <script>
+        document.getElementById('notifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const model = document.getElementById('model').value;
+            alert(`Thanks ${name}! We'll notify you when the RavZ ${model.charAt(0).toUpperCase() + model.slice(1)} launches.`);
+            this.reset();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
